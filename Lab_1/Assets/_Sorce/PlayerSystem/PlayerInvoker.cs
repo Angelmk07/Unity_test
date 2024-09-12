@@ -7,11 +7,14 @@ public class PlayerInvoker
     private PlayerMovment _playerMovment;
     private Player _player;
     private InputLisener _inputs;
-    public PlayerInvoker(PlayerMovment playerMovment, Player player, InputLisener inputs)
+    private PlayerShoot _playerShoot;
+    private GameObject bulletpref  = Resources.Load<GameObject>("Prefub/bullet");
+    public PlayerInvoker(PlayerMovment playerMovment, PlayerShoot playerShoot, Player player, InputLisener inputs)
     {
         _playerMovment = playerMovment;
         _player = player;
         _inputs = inputs;
+        _playerShoot = playerShoot;
     }
     public PlayerInvoker()
     {
@@ -35,5 +38,10 @@ public class PlayerInvoker
     {
 
         _playerMovment.RotateCam(-_inputs.Y_Mouse, _player.Cam_Place, _player.Rotation);
+    }
+    public void InvokeShoot()
+    {
+
+        _playerShoot.Shoot(bulletpref,_player.Hands, _player.Cam.transform.forward);
     }
 }
