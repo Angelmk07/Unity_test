@@ -234,6 +234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 309603301}
   - component: {fileID: 309603300}
+  - component: {fileID: 309603302}
   m_Layer: 0
   m_Name: lisener
   m_TagString: Untagged
@@ -268,6 +269,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &309603302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309603299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f39dd86c79661504f9639b9d17304b37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &576758314
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,6 +618,7 @@ GameObject:
   - component: {fileID: 1305710113}
   - component: {fileID: 1305710112}
   - component: {fileID: 1305710111}
+  - component: {fileID: 1305710115}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -728,6 +742,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305710109}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1305710115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305710109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f683a7ba117e1469b2fa567a9ecb85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Speed>k__BackingField: 0
+  <Force>k__BackingField: 0
+  <Rotation>k__BackingField: 0
+  <Rb>k__BackingField: {fileID: 0}
+  <player>k__BackingField: {fileID: 0}
+  <camera>k__BackingField: {fileID: 0}
 --- !u!1 &1909415730
 GameObject:
   m_ObjectHideFlags: 0
