@@ -8,7 +8,6 @@ public class PlayerMovment
     {
         rb.AddForce(Vector3.up * jumpForce,ForceMode.Impulse);
     }
-
     public void Move(float z, float x, GameObject gameObject,float speed)
     {
         gameObject.transform.position += new Vector3(x, 0, z)*Time.deltaTime* speed;

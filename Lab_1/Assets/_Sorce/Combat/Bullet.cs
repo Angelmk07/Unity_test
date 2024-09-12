@@ -17,7 +17,8 @@ public class Bullet : MonoBehaviour
     }
     private void StartMove()
     {
-        rb.AddForce(gameObject.transform.forward * speed ,ForceMode.Impulse);
+        Debug.Log("AddForce");
+        rb.AddForce(gameObject.transform.forward * speed, ForceMode.Impulse);
     }
     private void OnCollisionEnter(Collision collision)
     {

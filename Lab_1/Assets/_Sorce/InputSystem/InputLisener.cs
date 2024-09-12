@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class InputLisener : MonoBehaviour
 {
+    public float Z_Keyboard { get; private set; }
+    public float X_Keyboard { get; private set; }
+    public bool IsJump { get; private set; }
+    public float Y_Mouse { get; private set; }
+    public float X_Mouse { get; private set; }
     PlayerInvoker _playerInvoker;
     PlayerMovment _playerMovment;
     PlayerShoot _playerShoot;
     InputLisener _inputLisener;
     [SerializeField]
     Player _player;
-    private bool _canMove = true;
+    private bool _canUseInput = true;
     private bool _canJump = true;
-    public float Z_Keyboard { get; private set; }
-    public float X_Keyboard { get; private set; }
-    public bool IsJump { get; private set; }
-    public float Y_Mouse { get; private set; }
-    public float X_Mouse { get; private set; }
     private void Awake()
     {
         _playerMovment = new();
@@ -26,7 +26,7 @@ public class InputLisener : MonoBehaviour
     }
     void Update()
     {
-        if (_canMove)
+        if (_canUseInput)
         {
         ReadJumpInput();
         ReadHorizontalInput();
@@ -36,8 +36,8 @@ public class InputLisener : MonoBehaviour
         _playerInvoker.InvokeRotate();
         _playerInvoker.InvokeMove();
         _playerInvoker.InvokeRotateCam();
-        StopInput();
         ReadShootInput();
+        StopInput();
         }
         ReturnInput();
     }
@@ -52,7 +52,7 @@ public class InputLisener : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            _canMove = false;
+            _canUseInput = false;
             _player.tmp.color = Color.red;
             _player.tmp.text = "Not use input";
             
@@ -62,14 +62,11 @@ public class InputLisener : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            _canMove = true;
+            _canUseInput = true;
             _player.tmp.color = Color.green;
             _player.tmp.text = "Use input";
 
         }
-
-
-        
     }
     private void ReadJumpInput()
     {
@@ -84,7 +81,6 @@ public class InputLisener : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             _playerInvoker.InvokeShoot();
-
         }
     }
     private void ReadHorizontalInput()
