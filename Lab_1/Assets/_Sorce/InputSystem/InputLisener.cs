@@ -9,6 +9,7 @@ public class InputLisener : MonoBehaviour
     InputLisener _inputLisener;
     [SerializeField]
     Player _player;
+    private bool _canMove = true;
     public float Z_Keyboard { get; private set; }
     public float X_Keyboard { get; private set; }
     public bool IsJump { get; private set; }
@@ -16,11 +17,14 @@ public class InputLisener : MonoBehaviour
     public float X_Mouse { get; private set; }
     private void Awake()
     {
+        _playerMovment = new();
         _inputLisener = GetComponent<InputLisener>();
         _playerInvoker = new PlayerInvoker(_playerMovment, _player, _inputLisener);
     }
     void Update()
     {
+        if (_canMove)
+        {
         ReadJumpInput();
         ReadHorizontalInput();
         ReadVerticalInput();
@@ -28,6 +32,16 @@ public class InputLisener : MonoBehaviour
         ReadMouseY();
         _playerInvoker.InvokeRotate();
         _playerInvoker.InvokeMove();
+        _playerInvoker.InvokeRotateCam();
+        }
+
+    }
+    private void StopInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            _canMove = false;
+        }
     }
     private void ReadJumpInput()
     {
@@ -38,11 +52,11 @@ public class InputLisener : MonoBehaviour
     }
     private void ReadHorizontalInput()
     {
-        X_Keyboard = Input.GetAxis("Horizontal");
+        Z_Keyboard = Input.GetAxis("Horizontal");
     }
     private void ReadVerticalInput()
     {
-        Z_Keyboard = Input.GetAxis("Vertical");
+        X_Keyboard = Input.GetAxis("Vertical");
     }
     private void ReadMouseX()
     {

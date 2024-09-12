@@ -15,12 +15,14 @@ public class Player : MonoBehaviour
     [field: SerializeField]
     public GameObject player  { get; private set; }
     [field: SerializeField]
-    public GameObject camera { get; private set; }
+    public GameObject RotationPoint { get; private set; }
+    [field: SerializeField]
+    public GameObject Cam_Place { get; private set; }
     private void Awake()
     {
         Rb = GetComponent<Rigidbody>();
-        player = GetComponent<GameObject>();
-        camera = Camera.main.gameObject;
+        player = gameObject;
+        
     }
 
 

@@ -29,6 +29,11 @@ public class PlayerInvoker
     public void InvokeRotate()
     {
 
-        _playerMovment.Move(_inputs.X_Mouse, _inputs.Y_Mouse, _player.camera, _player.Rotation);
+        _playerMovment.Rotate( _inputs.X_Mouse, _player.RotationPoint, _player.Rotation);
+    }
+    public void InvokeRotateCam()
+    {
+
+        _playerMovment.RotateCam(-_inputs.Y_Mouse, _player.Cam_Place, _player.Rotation);
     }
 }
